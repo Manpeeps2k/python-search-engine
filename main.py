@@ -13,7 +13,7 @@ class vectorChecking:
             raise ValueError('Supplied should be a dictionary')
         total = 0
 
-        for word, count in word_count.iteritems():
+        for word, count in word_count.items():
             total += count ** 2
         return math.sqrt(total)
     
