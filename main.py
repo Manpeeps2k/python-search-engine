@@ -12,9 +12,10 @@ while True:
     if Choice == 1:
         inputSearching = input('Input Search: ')
         matches = []
+        vector_query = v.word_count(inputSearching)
 
         for i in range(len(index)):
-            relation = v.relation(v.word_count(inputSearching), index[i])
+            relation = v.relation(vector_query, index[i])
             if relation != 0:
                 matches.append((relation,documents[i][:200]))
 
@@ -29,11 +30,11 @@ while True:
         fileName = input("Add document File Name: ")
         parsedFile = pdfParsing(fileName)
 
-        id = len(documents)
+        doc_id = len(documents)
 
-        documents[id] = parsedFile
+        documents[doc_id] = parsedFile
 
-        index[id] = v.word_count(documents[id].lower())
+        index[doc_id] = v.word_count(documents[id].lower())
 
     elif Choice == 3:
         print("Thank you!")
