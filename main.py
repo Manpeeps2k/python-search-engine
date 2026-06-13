@@ -18,15 +18,15 @@ while True:
             relation = v.relation(vector_query, index[i])
             if relation != 0:
                 matches.append((relation,documents[i][:200]))
-            else:
-                print("No match found!")
 
         #ranking
         matches.sort(reverse=True)
 
-
         #displaying results
-        print(f"pending matches\n {matches[0]}\n{matches[1]}")
+        if matches != None:
+            print(f"pending matches\n {matches[0]}\n{matches[1]}")
+        else:
+            print("No Match Found!")
     
     elif Choice == 2:
         fileName = input("Add document File Name: ")
