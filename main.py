@@ -23,11 +23,10 @@ while True:
         matches.sort(reverse=True)
 
         #displaying results
-        if matches != None:
-            print(f"pending matches\n {matches[0]}\n{matches[1]}")
-        else:
-            print("No Match Found!")
-    
+        print("pending matches\n")
+        for i in matches:
+            print(matches[i], "\n")
+            
     elif Choice == 2:
         fileName = input("Add document File Name: ")
         parsedFile = pdfParsing(fileName)
