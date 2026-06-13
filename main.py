@@ -1,28 +1,43 @@
-import math
 from search import vectorChecking
-from index import documents, index
-# protoype
+from index import documents, index, pdfParsing
+from file import saveFile, loadFile
 
-# vector searching
-
-
-
+#load data
+loadFile(index)
 
 v = vectorChecking()
 
-inputSearching = input('Input Search: ')
-matches = []
+while True:
+    Choice = int(input("[1]Search\n[2]Add PDF file\n[3]Exit"))
+    if Choice == 1:
+        inputSearching = input('Input Search: ')
+        matches = []
 
-for i in range(len(index)):
-    relation = relation(v.word_count(inputSearching), index[i])
-    if relation != 0:
-        matches.append((relation,documents[i][:200]))
+        for i in range(len(index)):
+            relation = v.relation(v.word_count(inputSearching), index[i])
+            if relation != 0:
+                matches.append((relation,documents[i][:200]))
 
-#ranking
-matches.sort(reverse=True)
+        #ranking
+        matches.sort(reverse=True)
 
 
-#displaying results
-print(f"pending matches\n {matches[0]}\n{matches[1]}")
+        #displaying results
+        print(f"pending matches\n {matches[0]}\n{matches[1]}")
+    
+    elif Choice == 2:
+        fileName = input("Add document File Name: ")
+        parsedFile = pdfParsing(fileName)
+
+        id = len(documents)
+
+        documents[id] = parsedFile
+
+        index[id] = v.word_count(documents[id].lower())
+
+    elif Choice == 3:
+        print("Thank you!")
+        saveFile(index) # save data
+        break
 
 
