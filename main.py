@@ -18,6 +18,8 @@ while True:
             relation = v.relation(vector_query, index[i])
             if relation != 0:
                 matches.append((relation,documents[i][:200]))
+            else:
+                print("No match found!")
 
         #ranking
         matches.sort(reverse=True)
