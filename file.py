@@ -7,11 +7,10 @@ def saveFile(index):
     except ValueError as e:
         print(f'Error: the file is invalid json data. {e}')
     
-def loadFile(index):
+def loadFile():
     try:
-        with open('dictionary.json', 'r') as file:
-            index = json.load(file)
-            return index
+        with open('File//dictionary.json', 'r') as file:
+            return json.load(file)
     except ValueError as e:
         print(f'Error: the file is invalid json data. {e}')
     

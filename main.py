@@ -3,7 +3,7 @@ from index import documents, index, pdfParsing
 from file import saveFile, loadFile
 
 #load data
-loadFile(index)
+index = loadFile()
 
 v = vectorChecking()
 
