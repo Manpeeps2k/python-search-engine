@@ -14,3 +14,10 @@ def loadFile():
     except ValueError as e:
         print(f'Error: the file is invalid json data. {e}')
     
+
+def savedocuments(documents):
+    try:
+        with open("documents.json", "w") as f:
+            return json.dump(documents, f)
+    except ValueError as e:
+        print(f'Error: the file is invalid json data. {e}')
