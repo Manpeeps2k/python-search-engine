@@ -35,7 +35,7 @@ while True:
 
         documents[doc_id] = parsedFile
 
-        index[doc_id] = v.word_count(documents[id].lower())
+        index[doc_id] = v.word_count(documents[doc_id].lower())
 
     elif Choice == 3:
         print("Thank you!")
