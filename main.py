@@ -28,7 +28,7 @@ while True:
             print(matches[i], "\n")
             
     elif Choice == 2:
-        fileName = input("Add document File Name: ")
+        fileName = input("Add document File Directory(PDF format): ")
         parsedFile = pdfParsing(fileName)
 
         doc_id = len(documents)
