@@ -1,9 +1,7 @@
 from pypdf import PdfReader
 
 def pdfParsing(fileName):
-    if fileName != str:
-        raise ValueError("Not valid input")
-    
+
     text = PdfReader(fileName)
     extracted = ""
 
