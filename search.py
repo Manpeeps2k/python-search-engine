@@ -23,7 +23,7 @@ class vectorChecking:
         top = 0
 
         for word, count in instance1.items():
-            if instance2.has_key(word):
+            if word in instance2:
                 top += count * instance2[word]
             if (self.magnitude(instance1) * self.magnitude(instance2) != 0):
                 return top / (self.magnitude(instance1) * self.magnitude(instance2))

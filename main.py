@@ -37,6 +37,8 @@ while True:
 
         index[doc_id] = v.word_count(documents[doc_id].lower())
 
+        saveFile(index)
+
     elif Choice == 3:
         print("Thank you!")
         saveFile(index) # save data
