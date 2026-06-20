@@ -1,5 +1,5 @@
 from search import vectorChecking
-from index import documents, index, pdfParsing
+from index import documents, index, folderScan, pdfParsing
 from file import saveFile, loadFile, savedocuments, loadDocuments
 
 #load data
@@ -9,7 +9,7 @@ v = vectorChecking()
 
 while True:
     try:
-        Choice = int(input("[1]Search\n[2]Add PDF file\n[3]Exit\nChoice:"))
+        Choice = int(input("[1]Search\n[2]Scan Directory File(PDF)\n[3]Exit\nChoice: "))
     except ValueError:
         print("input number!")
         continue
@@ -37,23 +37,33 @@ while True:
             
     elif Choice == 2:
         try:
-            fileName = input("Add document File Directory(PDF format): ")
-            parsedFile = pdfParsing(fileName)
+            count = 0
+            fileNames = folderScan()
+
+            for name in fileNames:
+                pdfName = r'C:\Github-Projects\python-search-engine\documents\\' + name
+                
+                extracted_text = pdfParsing(pdfName)
+                
+                doc_id = str(len(documents))
+
+                documents[doc_id] = str(extracted_text).lower()
+
+                index[doc_id] = v.word_count(documents[doc_id])
+                count += 1
+            
+
+            print(index.keys())
+            print(documents.keys())
+            print(f"Files ADDED, {count}")
+
+            saveFile(index)
+            savedocuments(documents)
         except Exception as e:
             print(f"Invalid! {e}")
             continue
 
-        doc_id = str(len(documents))
-
-        documents[doc_id] = str(parsedFile).lower()
-
-        index[doc_id] = v.word_count(documents[doc_id])
-
-        print(index.keys())
-        print(documents.keys())
-
-        saveFile(index)
-        savedocuments(documents)
+        
 
     elif Choice == 3:
         print("Thank you!")
