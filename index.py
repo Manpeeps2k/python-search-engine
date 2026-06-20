@@ -1,7 +1,8 @@
 from pypdf import PdfReader
+from pathlib import Path
+
 
 def pdfParsing(fileName):
-
     text = PdfReader(fileName)
     extracted = ""
 
